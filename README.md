@@ -72,11 +72,9 @@ Set up a web server for Rails deployment
   - Select option 1 (install all defaults)
   - Install to /etc/nginx
 
-### Install nginx extras
-    sudo apt-get install nginx-extras
-    
 ### Install script to control nginx
-    sudo curl https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx | cat >> /etc/init.d/nginx
+    wget -O init-deb.sh http://library.linode.com/assets/660-init-deb.sh
+    sudo mv init-deb.sh /etc/init.d/nginx
     sudo chmod +x /etc/init.d/nginx
     sudo /usr/sbin/update-rc.d -f nginx defaults
 
@@ -85,54 +83,17 @@ Set up a web server for Rails deployment
     sudo wget -O /opt/nginx/conf/nginx.conf https://raw.github.com/PeterHamilton/rails-deploy-setup/master/nginx.conf
   
 ### Restart nginx to check everything works
-    sudo service nginx restart
-    
-### Backup original nginx.conf and mime.types
-    mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
-    mv /etc/nginx/mime.types /etc/nginx/mime.types.orig
-
-### Replace conf files for nginx
-    wget -O /etc/nginx/mime.types https://raw.github.com/PeterHamilton/rails-deploy-setup/master/mime.types
-    wget -O /etc/nginx/nginx.conf https://raw.github.com/PeterHamilton/rails-deploy-setup/master/nginx.conf
-
-### Remove default site
-    rm /etc/nginx/sites-enabled/default
-
-### Restart nginx
-    service nginx restart
+    sudo /etc/init.d/nginx stop
+    sudo /etc/init.d/nginx start
 
 ### Add ubuntu user to www-data group
-    usermod -a -G www-data ubuntu
+    usermod -a -G www-data deploy
 
 ### Create www folder
     mkdir /var/www
 
 ### Change owner of www folder to ubuntu
     chown deploy:www-data /var/www
-
-### Create a test app config in nginx
-    sudo apt-get install libsqlite3-dev
-    wget -O /etc/nginx/sites-available/example.com https://raw.github.com/PeterHamilton/rails-deploy-setup/master/example.com
-    ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
-    service nginx restart
-
-### Exit and return to deploy user
-    su - deploy
-
-### Create a test rails app
-    cd /var/www
-    rails new example
-    wget -O /var/www/example/config/unicorn.rb https://raw.github.com/PeterHamilton/rails-deploy-setup/master/unicorn.rb
-    wget -O /var/www/example/config/unicorn_init.sh https://raw.github.com/PeterHamilton/rails-deploy-setup/master/unicorn_init.sh
-    cd example
-    echo "gem 'unicorn'" >> Gemfile
-    echo "gem 'capistrano'" >> Gemfile
-    bundle
-    rm public/index.html
-
-    chmod +x config/unicorn_init.sh
-    mkdir tmp/pids
-    ./config/unicorn_init.sh
 
 #TODO (Ignore for Now):
 
