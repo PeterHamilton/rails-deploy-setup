@@ -70,7 +70,7 @@ Set up a web server for Rails deployment
     sudo /home/deploy/.rbenv/shims/passenger-install-nginx-module
   - Press Enter
   - Select option 1 (install all defaults)
-  - Install to /opt/nginx (default)
+  - Install to /etc/nginx
 
 ### Install nginx extras
     sudo apt-get install nginx-extras
