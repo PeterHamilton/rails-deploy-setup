@@ -7,7 +7,7 @@ Set up a web server for Rails deployment
 ### Upgrade system
     apt-get update
     apt-get -y upgrade
-    apt-get -y install python-software-properties language-pack-en curl git-core build-essential
+    apt-get -y install python-software-properties language-pack-en curl libcurl4-openssl-dev git-core build-essential
 
 ### Set language for system
     echo "LC_ALL=en_US.utf8" >> /etc/environment
