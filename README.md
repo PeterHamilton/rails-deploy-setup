@@ -79,8 +79,8 @@ Set up a web server for Rails deployment
     sudo /usr/sbin/update-rc.d -f nginx defaults
 
 ### Replace default nginx config with a leaner one
-    sudo mv /opt/nginx/conf/nginx.conf /opt/nginx/conf/nginx.conf.old # back up
-    sudo wget -O /opt/nginx/conf/nginx.conf https://raw.github.com/PeterHamilton/rails-deploy-setup/master/nginx.conf
+    sudo mv /etc/nginx/conf/nginx.conf /etc/nginx/conf/nginx.conf.old # back up
+    sudo wget -O /etc/nginx/conf/nginx.conf https://raw.github.com/PeterHamilton/rails-deploy-setup/master/nginx.conf
   
 ### Restart nginx to check everything works
     sudo /etc/init.d/nginx stop
