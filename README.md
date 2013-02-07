@@ -64,7 +64,7 @@ Set up a web server for Rails deployment
 ### Install Postgres
     sudo add-apt-repository ppa:pitti/postgresql
     sudo apt-get update
-    sudo install postgresql libpq-dev
+    sudo apt-get install postgresql libpq-dev
 
 ### Install Passenger & Nginx
     sudo /home/deploy/.rbenv/shims/passenger-install-nginx-module
