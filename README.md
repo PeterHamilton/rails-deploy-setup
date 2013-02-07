@@ -89,13 +89,13 @@ Set up a web server for Rails deployment
     sudo /etc/init.d/nginx stop
     sudo /etc/init.d/nginx start
 
-### Add ubuntu user to www-data group
+### Add 'deploy' user to www-data group
     usermod -a -G www-data deploy
 
 ### Create www folder
     mkdir /var/www
 
-### Change owner of www folder to ubuntu
+### Change owner of www folder to 'deploy'
     chown deploy:www-data /var/www
 
 #TODO (Ignore for Now):
