@@ -57,6 +57,9 @@ Set up a web server for Rails deployment
 
 ### Install Unicorn
     gem install unicorn
+    
+### Install Passenger
+    gem install passenger
 
 ### Enter sudo shell
     sudo -s
