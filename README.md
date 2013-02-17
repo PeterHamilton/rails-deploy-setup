@@ -47,6 +47,9 @@ Set up a web server for Rails deployment
     rbenv install 1.9.3-p194
     rbenv global 1.9.3-p194
 
+### Install Rubygems
+    sudo apt-get install rubygems
+    
 ### Setup Gems
     wget -O ~/.gemrc https://raw.github.com/PeterHamilton/rails-deploy-setup/master/.gemrc
     gem install bundler --no-ri --no-rdoc
